@@ -26,7 +26,7 @@ class _trackDetailState extends State<trackDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("TrackDetails"),
+        title: const Text("Lyrics of the Track"),
       ),
       body: BlocConsumer<TrackblocBloc, TrackblocState>(
         bloc: trackbloc,

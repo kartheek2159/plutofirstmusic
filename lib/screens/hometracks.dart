@@ -79,7 +79,7 @@ class _HomeTracksState extends State<HomeTracks> {
                                                       .toString(),
                                                 )));
                                   },
-                                  child: const Text("Tap to see "))
+                                  child: const Text("Tap to see Lyrics "))
                               // Add other children to the Column as needed
                             ],
                           ),
