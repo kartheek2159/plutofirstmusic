@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plutofirstmusic/BLOC/bloc/trackbloc_bloc.dart';
+import 'package:plutofirstmusic/screens/trackDetail.dart';
 
 class HomeTracks extends StatefulWidget {
   const HomeTracks({super.key});
@@ -69,7 +70,15 @@ class _HomeTracksState extends State<HomeTracks> {
                                 ],
                               ),
                               ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (context) => trackDetail(
+                                                  trackid: successState
+                                                      .tracks[index].trackId
+                                                      .toString(),
+                                                )));
+                                  },
                                   child: const Text("Tap to see "))
                               // Add other children to the Column as needed
                             ],

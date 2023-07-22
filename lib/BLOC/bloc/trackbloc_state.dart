@@ -15,3 +15,25 @@ class TrackFetch extends TrackblocState {
     required this.tracks,
   });
 }
+
+class TrackdetailFetchLoad extends TrackblocState {}
+
+class TrackdetailFetcherror extends TrackblocState {}
+
+class TrackDetailFetch extends TrackblocState {
+  final Track t;
+  TrackDetailFetch({
+    required this.t,
+  });
+}
+
+class TrackLyricsload extends TrackblocState {}
+
+class TrackLyricserror extends TrackblocState {}
+
+class Tracklyricsfetch extends TrackblocState {
+  final String lyrics;
+  Tracklyricsfetch({
+    required this.lyrics,
+  });
+}

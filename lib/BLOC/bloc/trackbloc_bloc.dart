@@ -15,6 +15,8 @@ part 'trackbloc_state.dart';
 class TrackblocBloc extends Bloc<TrackblocEvent, TrackblocState> {
   TrackblocBloc() : super(TrackblocInitial()) {
     on<TrackInitialfetch>(trackfetchinitial);
+    on<Trackdetailfetch>(trackfetchdetail);
+    on<TrackLyricsfetch>(tracklyrics);
   }
 
   FutureOr<void> trackfetchinitial(
@@ -25,6 +27,30 @@ class TrackblocBloc extends Bloc<TrackblocEvent, TrackblocState> {
       emit(TrackFetch(tracks: tracks));
     } catch (e) {
       emit(TrackFetcherror());
+      log(e.toString());
+    }
+  }
+
+  FutureOr<void> trackfetchdetail(
+      Trackdetailfetch event, Emitter<TrackblocState> emit) async {
+    emit(TrackdetailFetchLoad());
+    Track t = await TrackRepo.detailFetch(event.trackid);
+    try {
+      emit(TrackDetailFetch(t: t));
+    } catch (e) {
+      emit(TrackdetailFetcherror());
+      log(e.toString());
+    }
+  }
+
+  FutureOr<void> tracklyrics(
+      TrackLyricsfetch event, Emitter<TrackblocState> emit) async {
+    emit(TrackLyricsload());
+    String lyrics = await TrackRepo.lyricsfetch(event.trackid);
+    try {
+      emit(Tracklyricsfetch(lyrics: lyrics));
+    } catch (e) {
+      emit(TrackLyricserror());
       log(e.toString());
     }
   }
